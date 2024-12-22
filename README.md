@@ -2,6 +2,8 @@
 
 I first did this rederivation when trying to understand [EWC](https://arxiv.org/abs/1801.01423) in 2019, when experimenting with continual learning at SDSUG AIML lab with Davit Soselia and others. No guarantees that everything is correct, but it mostly seems to check out.
 
+
+
 ## Definitions
 
 - Data-generating distribution: The mixture of the latent distributions of the dataset from the first task and the dataset from the second task.
@@ -255,6 +257,8 @@ H(\log P(W = w \mid D_a)) = H(\log P(D_a \mid W = w)) \tag{Lemma 6}
 
 ### 2.2 Laplace Approximation
 
+The Laplace approximation procedure here follows the one outlined in chapter 4.4 of Pattern Recognition and Machine Learning (Bishop). 
+
 Let’s approximate $\log P(W = w \mid D_a)$ using a second-order Taylor series expansion.
 
 ```math
@@ -479,7 +483,7 @@ Adding per-task $\lambda$'s and $\ell_2$ decay, the loss becomes:
 J(w) = -\log P(D_k \mid W = w) - \frac{1}{2} \sum_{i=1}^M \left( \ell_2 + \sum_{t=1}^{k-1} \lambda_t \cdot \text{diag} \left( \sum_{x \in D_t} \nabla (-\log P(x \mid W = w_t^*))^2 \right) \right)_{i,i} (w_i - w_{k-1,i}^*)^2
 ```
 
-This is different from the loss recommended by the original paper for multiple tasks. In the original paper, a new quadratic penalty is added for each task:
+[As outlined by Ferenc Huszár](https://www.pnas.org/doi/10.1073/pnas.1717042115), this is different from the loss recommended by the original paper for multiple tasks. In the original paper, a new quadratic penalty is added for each task:
 
 ```math
 J_{\text{original}}(w) = -\log P(D_k \mid W = w) - \frac{1}{2} \sum_{t=1}^{k-1} \sum_{i=1}^M \left( \ell_2 + \lambda_t \cdot \text{diag} \left( \sum_{x \in D_t} \nabla (-\log P(x \mid W = w_t^*))^2 \right) \right)_{i,i} (w_i - w_{t,i}^*)^2
