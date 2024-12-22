@@ -6,7 +6,7 @@ I first did this rederivation when trying to understand [EWC](https://arxiv.org/
 
 ## Definitions
 
-- Data-generating distribution: The mixture of the distributions of the dataset from the first task and the dataset from the second task.
+- Data-generating distribution: The mixture of the underlying distributions of the dataset from the first task and the dataset from the second task.
 
 - **$W = w$**: The event that our current parameters $w$ are optimal for our model's ability to model the data-generating distribution.
 
@@ -23,7 +23,7 @@ P(D) = P(D_a \cap D_b)
 
 ## Presuppositions
 
-1. We will use a flat prior for $P(W=w)$. This means that when we have seen no data, we assume that any value of $w$ is just as likely to be the optimal weights for our data-generating distribution (DGD) as any other.
+1. We will use a flat prior for $P(W=w)$. This means that when we have seen no data, we assume that any value of $w$ is just as likely to be the optimal weights for our data-generating distribution as any other.
 
 2. We will assume that the non-diagonal elements of the Hessian of the model's negative log-likelihood on the data are negligible. In other words, we assume that the variation in the loss with respect to any given parameter $w_i$ does not significantly depend on any other parameter $w_j$. Mathematically, this means that:
 ```math
@@ -115,7 +115,7 @@ Rearranging the terms:
 ### Analysis
 
 - $\log P(D_b \mid W = w)$ is the log-likelihood of our model on dataset $D_b$. Thus, the probability of $W$ being optimal on $D$ depends on the log-likelihood of our model on dataset $D_b$.
-- $\log P(W = w \mid D_a)$ is an intractable posterior term that represents the probability of $W$ being optimal given that $D_a$ has been generated from the data-generating distribution (DGD).
+- $\log P(W = w \mid D_a)$ is an intractable posterior term that represents the probability of $W$ being optimal given that $D_a$ has been generated from the data-generating distribution.
 - Finally, we don't care about the $\log P(D_b \mid D_a)$ term because it is independent of and not conditioned on the probability of our weights being optimal, so it's a constant regardless of what parameters we have.
 
 In other words, to maximize $P(W = w \mid D)$, we need to:
