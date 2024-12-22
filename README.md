@@ -140,7 +140,7 @@ Let’s suppose that we have randomly initialized our model and then trained it 
 Thus, we have:
 
 ```math
-\nabla \log P(D_a \mid W = w^*) = 0 2 \qquad \textnormal { (Lemma 1)}
+\nabla \log P(D_a \mid W = w^*) = 0 \qquad \textnormal { (Lemma 1)}
 ```
 
 
