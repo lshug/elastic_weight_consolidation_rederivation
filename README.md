@@ -1,6 +1,6 @@
 # Rederiving Elastic Weight Consolidation (EWC) 
 
-I first did this rederivation when trying to understand [EWC](https://arxiv.org/abs/1801.01423) in 2019, when experimenting with continual learning at SDSUG AIML lab with Davit Soselia and others. No guarantees that everything is correct, but it mostly seems to check out.
+I first did this rederivation when trying to understand [EWC](https://arxiv.org/abs/1612.00796) in 2019, when experimenting with continual learning at SDSUG AIML lab with Davit Soselia and others. No guarantees that everything is correct, but it mostly seems to check out.
 
 
 
