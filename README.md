@@ -6,7 +6,7 @@ I first did this rederivation when trying to understand [EWC](https://arxiv.org/
 
 ## Definitions
 
-- Data-generating distribution: The mixture of the latent distributions of the dataset from the first task and the dataset from the second task.
+- Data-generating distribution: The mixture of the distributions of the dataset from the first task and the dataset from the second task.
 
 - **$W = w$**: The event that our current parameters $w$ are optimal for our model's ability to model the data-generating distribution.
 
