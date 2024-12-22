@@ -490,4 +490,4 @@ J(w) = -\log P(D_k \mid W = w) - \frac{1}{2} \sum_{i=1}^M \left( \ell_2 + \sum_{
 J_{\text{original}}(w) = -\log P(D_k \mid W = w) - \frac{1}{2} \sum_{t=1}^{k-1} \sum_{i=1}^M \left( \ell_2 + \lambda_t \cdot \text{diag} \left( \sum_{x \in D_t} \nabla (-\log P(x \mid W = w_t^*))^2 \right)_{i,i} \right) (w_i - w_{t,i}^*)^2
 ```
 
-$J(w)$ is more theoretically sound, but $J_{\text{original}}(w)$ is more efficient. $J(w)$ only requires storing the running sum of the Hessian approximations and the previous-task optimum, whereas $J_{\text{original}}(w)$ requires storing the Hessian and the optimum for each task.
+$J(w)$ is more theoretically sound, but $J_{\text{original}}(w)$ is empirically informed. At the same time, $J(w)$ only requires storing the running sum of the Hessian approximations and the previous-task optimum, whereas $J_{\text{original}}(w)$ requires storing the Hessian and the optimum for each task.
