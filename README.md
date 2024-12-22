@@ -84,7 +84,7 @@ Thus, we can rewrite the equation as:
 P(W = w \mid D) = \frac{P(D_a \cap W = w) \cdot P(D_b \mid W = w)}{P(D_a \cap D_b)}
 ```
 
-From Bayes' Theorem, we also know that:
+We also know that:
 ```math
 P(D_a \cap D_b) = P(D_b \mid D_a) \cdot P(D_a)
 ```
