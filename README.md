@@ -31,7 +31,7 @@ H_{ij} \approx 0 \quad \text{for} \quad i \neq j
 ```
    Intuitively, this assumption means that how the loss varies with any given parameter $w_i$ does not significantly change due to the influence of other parameters.
 
-3. $D_a$ and $D_b$ are **conditionally independent** given $W=w$. This can be written as:
+3. $D_a$ and $D_b$ are conditionally independent given $W=w$. This can be written as:
 ```math
 P(D_a \cap D_b \mid W=w) = P(D_a \mid W=w) \cdot P(D_b \mid W=w)
 ```
@@ -140,8 +140,9 @@ Let’s suppose that we have randomly initialized our model and then trained it 
 Thus, we have:
 
 ```math
-\nabla \log P(D_a \mid W = w^*) = 0 \tag{Lemma 1}
+\nabla \log P(D_a \mid W = w^*) = 0 2 \qquad \textnormal { (Lemma 1)}
 ```
+
 
 Furthermore, we know that the array $D_a$ consists of some independent and identically distributed (iid) points $x$. So, we can express $P(D_a \mid W = w^*)$ as:
 
@@ -170,7 +171,7 @@ Dividing by $N$, the number of samples, we get:
 Thus, we have:
 
 ```math
-\mathbb{E}[\nabla \log P(x \mid W = w^*)] = 0 \tag{Lemma 2}
+\mathbb{E}[\nabla \log P(x \mid W = w^*)] = 0 \qquad \textnormal { (Lemma 2)}
 ```
 
 Next, we know that:
@@ -230,25 +231,25 @@ Therefore, we conclude that:
 As such, we have:
 
 ```math
-\nabla P(W = w \mid D_a) = \nabla P(D_a \mid W = w) \tag{Lemma 3}
+\nabla P(W = w \mid D_a) = \nabla P(D_a \mid W = w) \qquad \textnormal { (Lemma 3)}
 ```
 
 Similarly, for the Hessian:
 
 ```math
-H(P(W = w \mid D_a)) = H(P(D_a \mid W = w)) \tag{Lemma 4}
+H(P(W = w \mid D_a)) = H(P(D_a \mid W = w)) \qquad \textnormal { (Lemma 4)}
 ```
 
 From Lemma 3 and Lemma 1, we get:
 
 ```math
-\nabla \log P(W = w^* \mid D_a) = 0 \tag{Lemma 5}
+\nabla \log P(W = w^* \mid D_a) = 0 \qquad \textnormal { (Lemma 5)}
 ```
 
 From Lemma 4, we get:
 
 ```math
-H(\log P(W = w \mid D_a)) = H(\log P(D_a \mid W = w)) \tag{Lemma 6}
+H(\log P(W = w \mid D_a)) = H(\log P(D_a \mid W = w)) \qquad \textnormal { (Lemma 6)}
 ```
 
 
@@ -265,7 +266,7 @@ Let’s approximate $\log P(W = w \mid D_a)$ using a second-order Taylor series 
 \log P(W = w \mid D_a) \approx \log P(W = w^* \mid D_a) + (w - w^*)^T \nabla \log P(W = w^* \mid D_a) + \frac{1}{2} (w - w^*)^T H(\log P(W = w^* \mid D_a)) (w - w^*)
 ```
 
-From **Lemma 5**, we know that $\nabla \log P(W = w^* \mid D_a) = 0$. Thus, the above expression simplifies to:
+From Lemma 5, we know that $\nabla \log P(W = w^* \mid D_a) = 0$. Thus, the above expression simplifies to:
 
 ```math
 \log P(W = w \mid D_a) \approx \log P(W = w^* \mid D_a) + \frac{1}{2} (w - w^*)^T H(\log P(W = w^* \mid D_a)) (w - w^*)
@@ -295,7 +296,7 @@ Substituting back $A$, we get:
 P(W = w \mid D_a) \approx \mathcal{N}(w \mid w^*, \left( -H(\log P(W = w^* \mid D_a)) \right)^{-1})
 ```
 
-From **Lemma 6**, we know that:
+From Lemma 6, we know that:
 
 ```math
 - H(\log P(W = w^* \mid D_a)) = - H(\log P(D_a \mid W = w^*)) = \sum_{x} H(-\log P(x \mid W = w^*)) = N \cdot \frac{1}{N} \sum_{x} H(-\log P(x \mid W = w^*)) = N \cdot \mathbb{E} \left[ H(-\log P(x \mid W = w^*)) \right]
@@ -325,7 +326,7 @@ The variance of $\nabla (-\log P(x \mid W = w^*))$ is given by:
 \text{var} \left( \nabla (-\log P(x \mid W = w^*)) \right) = \mathbb{E} \left[ \left( \nabla (-\log P(x \mid W = w^*)) - \mathbb{E} \left[ \nabla (-\log P(x \mid W = w^*)) \right] \right)^2 \right]
 ```
 
-From **Lemma 2**, we know that:
+From Lemma 2, we know that:
 
 ```math
 \mathbb{E} \left[ \nabla (\log P(x \mid W = w^*)) \right] = 0
